@@ -1,0 +1,119 @@
+/* Material You Variant C: shared Android-like base */
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    modi: "drun,run,filebrowser,window";
+    show-icons: true;
+    display-drun: " Apps";
+    display-run: " Run";
+    display-filebrowser: " Files";
+    display-window: " Windows";
+    drun-display-format: "{name}";
+    window-format: "{w} · {c} · {t}";
+}
+
+* {
+    font: "JetBrainsMono Nerd Font 10";
+    background-color: @background;
+    text-color: @foreground;
+    selected: @selected-normal-background;
+    accent: @active-background;
+    urgent: @urgent-background;
+    surface-container-low: rgba(255, 255, 255, 0.03);
+    surface-container: rgba(255, 255, 255, 0.07);
+    surface-container-high: rgba(255, 255, 255, 0.11);
+    outline-variant: rgba(255, 255, 255, 0.16);
+    on-surface-variant: rgba(255, 255, 255, 0.70);
+}
+
+window {
+    transparency: "real";
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    width: 660px;
+    border: 1px solid;
+    border-radius: 30px;
+    border-color: var(outline-variant);
+    background-color: @background;
+}
+
+mainbox {
+    spacing: 12px;
+    padding: 20px;
+    background-color: transparent;
+    children: [ "inputbar", "listview" ];
+}
+
+inputbar {
+    spacing: 10px;
+    padding: 12px 14px;
+    border: 1px solid;
+    border-radius: 999px;
+    border-color: var(surface-container-high);
+    background-color: var(surface-container);
+    text-color: @foreground;
+    children: [ "prompt", "entry" ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @selected;
+    padding: 0px;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @foreground;
+    cursor: text;
+    placeholder: "Buscar...";
+    placeholder-color: var(on-surface-variant);
+}
+
+listview {
+    columns: 1;
+    lines: 8;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    fixed-height: true;
+    spacing: 7px;
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element {
+    spacing: 10px;
+    padding: 9px 11px;
+    border: 1px solid;
+    border-radius: 16px;
+    border-color: transparent;
+    background-color: var(surface-container-low);
+    text-color: @foreground;
+}
+
+element normal.normal {
+    background-color: var(surface-container-low);
+    text-color: @foreground;
+}
+
+element selected.normal {
+    background-color: var(surface-container);
+    border-color: @selected;
+    text-color: @foreground;
+}
+
+element-icon {
+    background-color: transparent;
+    text-color: inherit;
+    size: 24px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    highlight: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}

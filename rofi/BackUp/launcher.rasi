@@ -1,0 +1,110 @@
+/* 🌙✨ ROFI SAILOR MOON: TABBED MODE ✨🌙 */
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+configuration {
+    /* AQUÍ ACTIVAMOS LOS 4 MODOS */
+    modi: "drun,run,filebrowser,window";
+    
+    /* Nombres e Iconos para los botones */
+    display-drun: " Apps";
+    display-run: " Run";
+    display-filebrowser: " Archivos";
+    display-window: " Ventanas";
+    
+    show-icons: true;
+    font: "CaskaydiaCove Nerd Font Bold 12";
+}
+
+* {
+    background-color: @background;
+    text-color: @foreground;
+    selected: @selected-normal-background;
+    accent: @active-background;
+    urgent: @urgent-background;
+}
+
+window {
+    transparency: "real";
+    width: 600px;               /* Un poco más ancho para que quepan los botones */
+    border: 2px;
+    border-color: @selected;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+/* --- ESTRUCTURA PRINCIPAL --- */
+mainbox {
+    /* Orden: Barra de búsqueda -> Lista -> BOTONES ABAJO */
+    children: [ inputbar, listview, mode-switcher ];
+    spacing: 15px;
+    padding: 15px;
+}
+
+/* --- BARRA DE BÚSQUEDA --- */
+inputbar {
+    background-color: transparent;
+    children: [ prompt, entry ];
+    border-radius: 10px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @accent;
+    text-color: #1a1b26;
+    padding: 10px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+entry {
+    padding: 10px;
+    border: 2px;
+    border-color: @accent;
+    border-radius: 0px 10px 10px 0px;
+    placeholder: "Buscar...";
+}
+
+/* --- LISTA DE RESULTADOS --- */
+listview {
+    lines: 8;
+    columns: 1;
+    scrollbar: false;
+}
+
+element {
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+
+element selected {
+    background-color: rgba(153, 204, 255, 0.2); /* Azul transparente */
+    text-color: @selected;
+}
+
+element-icon {
+    size: 24px;
+    vertical-align: 0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+/* --- LOS BOTONES (MODE SWITCHER) --- */
+mode-switcher {
+    spacing: 10px;
+    margin: 5px 0 0 0;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    text-color: @foreground;
+    cursor: pointer;
+}
+
+/* Botón activo (en el que estás ahora) */
+button selected {
+    background-color: @selected; /* Rosa */
+    text-color: #1a1b26;         /* Texto oscuro */
+    font-weight: bold;
+}

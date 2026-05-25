@@ -1,0 +1,66 @@
+/* 📸 THEME SCREENSHOT MENU */
+
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+configuration {
+    font: "CaskaydiaCove Nerd Font Bold 12";
+    show-icons: false;
+}
+
+* {
+    background-color: @background;
+    text-color: @foreground;
+    selected: @selected-normal-background;
+    accent: @active-background;
+    urgent: @urgent-background;
+    border-color: @selected-normal-background;
+}
+
+window {
+    transparency: "real";
+    location: center;
+    anchor: center;
+    width: 400px;        /* Ancho de la cajita */
+    
+    border: 2px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+mainbox {
+    children: [ message, listview ];
+    spacing: 10px;
+    padding: 5px;
+}
+
+message {
+    border: 0px;
+    padding: 0px;
+}
+
+textbox {
+    text-color: @selected;
+}
+
+listview {
+    lines: 4;            /* Solo 4 líneas de alto */
+    columns: 1;
+    scrollbar: false;
+    spacing: 5px;
+}
+
+element {
+    padding: 8px 10px;
+    border-radius: 10px;
+    text-color: @foreground;
+}
+
+element selected {
+    background-color: @selected;
+    text-color: #1a1b26; /* Texto oscuro al seleccionar */
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}

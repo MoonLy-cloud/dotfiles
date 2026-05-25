@@ -1,0 +1,32 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 38,
+    "spacing": 4,
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-bottom": 0,
+    "include": [
+        "~/.config/waybar/Configs-way/TOP-FOREST-OPS/modules/left.jsonc",
+        "~/.config/waybar/Configs-way/TOP-FOREST-OPS/modules/center.jsonc",
+        "~/.config/waybar/Configs-way/TOP-FOREST-OPS/modules/right.jsonc"
+    ],
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/updates",
+        "custom/dunst"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "custom/weather",
+        "battery",
+        "pulseaudio",
+        "idle_inhibitor",
+        "custom/notification",
+        "clock",
+        "tray"
+    ]
+}

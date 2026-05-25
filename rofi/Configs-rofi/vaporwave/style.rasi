@@ -1,0 +1,185 @@
+/* 🌈 ROFI VAPORWAVE THEME - ESTILO 🌈 */
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+    background-color:           transparent;
+    text-color:                 @foreground;
+    border-color:               rgba(255, 110, 199, 0.4);
+    
+    /* Colores vaporwave custom (rosa neón) */
+    accent-pink:                #ff6ec7;
+    accent-cyan:                #48d6ff;
+    accent-lilac:               #b892ff;
+    accent-purple:              #9172A3;
+    
+    bg-semi:                    rgba(21, 15, 54, 0.92);
+    selection:                  @accent-purple;
+    urgent:                     @urgent-background;
+}
+
+window {
+    transparency:               "real";
+    location:                   center;
+    anchor:                     center;
+    width:                      680px;
+    height:                     auto;
+    
+    border:                     2px solid;
+    border-radius:              18px;
+    border-color:               @accent-purple;
+    background-color:           @bg-semi;
+    
+    padding:                    0px;
+    margin:                     0px;
+    
+    /* Efecto glow en el borde - neón */
+    box-shadow:                 0 0 20px rgba(241, 110, 199, 0.3);
+}
+
+mainbox {
+    enabled:                    true;
+    spacing:                    14px;
+    padding:                    20px;
+    border:                     0px;
+    background-color:           transparent;
+    children:                   [ "inputbar", "mode-switcher", "listview" ];
+}
+
+/* ─── SEARCH INPUT ─── */
+inputbar {
+    enabled:                    true;
+    spacing:                    8px;
+    padding:                    12px 14px;
+    border:                     1px solid;
+    border-radius:              10px;
+    border-color:               rgba(255, 110, 199, 0.3);
+    background-color:           rgba(255, 110, 199, 0.08);
+    children:                   [ "prompt", "entry", "case-indicator" ];
+}
+
+prompt {
+    text-color:                 @accent-pink;
+    font:                       "CaskaydiaCove Nerd Font Bold 11";
+    padding:                    4px 8px;
+}
+
+entry {
+    placeholder:                "ingresa para buscar...";
+    placeholder-color:          rgba(255, 255, 255, 0.3);
+    text-color:                 @foreground;
+    padding:                    4px 0px;
+}
+
+case-indicator {
+    text-color:                 @accent-cyan;
+    padding:                    4px 8px;
+}
+
+/* ─── MODE SWITCHER ─── */
+mode-switcher {
+    enabled:                    true;
+    spacing:                    6px;
+    padding:                    0px;
+    background-color:           transparent;
+}
+
+button {
+    padding:                    8px 12px;
+    border-radius:              8px;
+    border:                     1px solid;
+    border-color:               transparent;
+    background-color:           rgba(255, 255, 255, 0.08);
+    text-color:                 @foreground;
+    font:                       "CaskaydiaCove Nerd Font 10";
+    cursor:                     pointer;
+    transition:                 200ms;
+}
+
+button selected {
+    background-color:           @accent-pink;
+    border-color:               @accent-pink;
+    text-color:                 @background;
+    font:                       "CaskaydiaCove Nerd Font Bold 10";
+    box-shadow:                 0 0 10px rgba(255, 110, 199, 0.4);
+}
+
+button:hover {
+    background-color:           rgba(255, 110, 199, 0.2);
+    border-color:               @accent-pink;
+}
+
+/* ─── LISTVIEW ─── */
+listview {
+    enabled:                    true;
+    spacing:                    6px;
+    padding:                    0px;
+    background-color:           transparent;
+    border:                     0px;
+    scrollbar:                  true;
+    cycle:                      false;
+}
+
+scrollbar {
+    enabled:                    true;
+    handle-width:               4px;
+    handle-color:               @accent-purple;
+    background-color:           rgba(255, 110, 199, 0.1);
+    border-radius:              4px;
+}
+
+/* ─── ELEMENTOS DE LISTA ─── */
+element {
+    enabled:                    true;
+    padding:                    10px 12px;
+    spacing:                    8px;
+    border-radius:              10px;
+    border:                     1px solid;
+    border-color:               transparent;
+    background-color:           transparent;
+    text-color:                 @foreground;
+    cursor:                     pointer;
+    transition:                 140ms;
+}
+
+element icon {
+    size:                       32px;
+    border-radius:              6px;
+    background-color:           rgba(255, 110, 199, 0.1);
+    padding:                    4px;
+}
+
+element-text {
+    vertical-align:             0.5;
+    text-color:                 @foreground;
+    highlight:                  @accent-pink;
+    font:                       "CaskaydiaCove Nerd Font 10";
+}
+
+element selected {
+    border-color:               @accent-pink;
+    background-color:           rgba(255, 110, 199, 0.15);
+    text-color:                 @accent-pink;
+    box-shadow:                 inset 0 0 12px rgba(255, 110, 199, 0.2);
+}
+
+element selected icon {
+    background-color:           rgba(255, 110, 199, 0.25);
+}
+
+element:hover {
+    border-color:               @accent-purple;
+    background-color:           rgba(177, 146, 163, 0.1);
+}
+
+element normal.urgent {
+    background-color:           rgba(255, 110, 199, 0.1);
+}
+
+element normal.urgent text {
+    text-color:                 @urgent;
+}
+
+element selected.urgent {
+    background-color:           @urgent;
+    text-color:                 @background;
+}

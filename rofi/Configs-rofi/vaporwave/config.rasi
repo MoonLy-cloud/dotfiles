@@ -1,0 +1,22 @@
+/* 🌈 ROFI VAPORWAVE THEME - CONFIG 🌈 */
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    modi:                       "drun,run,filebrowser,window";
+    show-icons:                 true;
+    display-drun:               "󰀻 Aplicaciones";
+    display-run:                " Run";
+    display-filebrowser:        " Archivos";
+    display-window:             " Ventanas";
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
+    
+    font:                        "CaskaydiaCove Nerd Font 11";
+    icon-theme:                  "Papirus";
+    
+    kb-row-up:                   "Up,Control+k";
+    kb-row-down:                 "Down,Control+j";
+    kb-accept-entry:             "Return,KPEnter";
+    kb-mode-next:                "Tab";
+    kb-mode-previous:            "shift+Tab";
+}

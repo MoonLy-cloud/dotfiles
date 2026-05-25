@@ -1,0 +1,39 @@
+{
+    // --- CONFIGURACIÓN GLOBAL ---
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 4,
+    "margin-top": 10,
+    "margin-left": 18,
+    "margin-right": 18,
+    "margin-bottom": 0,
+
+    // --- IMPORTAR MÓDULOS ---
+    "include": [
+        "~/.config/waybar/Configs-way/TOP-ORIGAMI/modules/left.jsonc",
+        "~/.config/waybar/Configs-way/TOP-ORIGAMI/modules/center.jsonc",
+        "~/.config/waybar/Configs-way/TOP-ORIGAMI/modules/right.jsonc"
+    ],
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window",
+        "custom/weather"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "custom/spotify",
+        "custom/updates",
+        "battery",
+        "pulseaudio",
+        "custom/notification",
+        "custom/dunst",
+        "idle_inhibitor",
+        "tray"
+    ]
+}

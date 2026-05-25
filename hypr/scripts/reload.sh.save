@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# --- 1. MAGIA DE PYWAL ---
+# Si le pasamos una imagen al script (ej: ./reload.sh fondo.jpg), usamos esa imagen.
+# Si no le pasamos nada, le decimos a pywal que restaure la última paleta que calculó (-R).
+if [ -n "$1" ]; then
+    # -q es para que lo haga en silencio (quiet)
+    wal -q -i "$1"
+else
+    wal -q -R
+fi
+
+# --- 2. RECARGAR HYPRLAND ---
+# Esto leerá el archivo colors-hyprland.conf que pywal acaba de actualizar
+hyprctl reload
+
+# --- 3. REINICIAR WAYBAR (Versión Inmortal) ---
+pkill waybar
+sleep 0.5
+setsid waybar > /dev/null 2>&1 &
+swaync-client -rs > /dev/null 2>&1 &
+
+# --- 4. RECARGAR ROFI Y NOTIFICACIONES ---
+# Si usas dunst, descomenta la siguiente línea para que las notificaciones también cambien de color
+# pkill dunst && dunst &
+
+# --- 5. AVISO FINAL ---
+notify-send "🌸 Aesthetic Recargado" "Colores de Pywal aplicados correctamente." -i utilities-terminal
+
+# --- 6. ACTUALIZAR SPOTIFY (SPICETIFY) ---
+if pgrep -x "spotify" > /dev/null; then
+    # Si Spotify está abierto, actualizamos los colores
+    # El & al final es para que no bloquee el resto del script
+    spicetify update & 
+fi

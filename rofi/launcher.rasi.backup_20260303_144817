@@ -1,0 +1,115 @@
+/* 🗂️ ROFI MATERIAL CARD MODE (TABS ARRIBA) 🗂️ */
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    /* AQUÍ ESTÁN TUS 4 SECCIONES */
+    modi: "drun,run,filebrowser,window";
+    show-icons: true;
+    display-drun: " Apps";
+    display-run: " Run";
+    display-filebrowser: " Archivos";
+    display-window: " Ventanas";
+    font: "CaskaydiaCove Nerd Font 12";
+}
+
+* {
+    background-color: transparent;
+    text-color: @foreground;
+    selected: @selected-normal-background;
+    accent: @active-background;
+}
+
+window {
+    location: center;
+    anchor: center;
+    width: 650px;
+    background-color: @background;
+    border: 2px solid;
+    border-color: @selected;
+    border-radius: 20px;
+}
+
+mainbox {
+    padding: 25px;
+    spacing: 20px;
+    /* ORDEN: 1. Pestañas -> 2. Buscador -> 3. Lista */
+    children: [ mode-switcher, inputbar, listview ];
+}
+
+/* --- TUS 4 PESTAÑAS (ARRIBA) --- */
+mode-switcher {
+    spacing: 15px;
+}
+
+button {
+    padding: 12px;
+    border-radius: 12px;
+    /* Fondo sutil para las pestañas inactivas */
+    background-color: rgba(255, 255, 255, 0.05); 
+    text-color: @foreground;
+    cursor: pointer;
+}
+
+button selected {
+    /* La pestaña activa toma el color principal de Sakura */
+    background-color: @selected;
+    text-color: @background;
+    font-weight: bold;
+}
+
+/* --- BARRA DE BÚSQUEDA --- */
+inputbar {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 15px 20px;
+    spacing: 15px;
+    border: 1px solid;
+    border-color: @selected;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @selected;
+    font: "CaskaydiaCove Nerd Font Bold 14";
+    vertical-align: 0.5;
+}
+
+entry {
+    text-color: @foreground;
+    placeholder: "Buscar...";
+    font: "CaskaydiaCove Nerd Font 13";
+    vertical-align: 0.5;
+}
+
+/* --- LISTA DE RESULTADOS --- */
+listview {
+    columns: 1;
+    lines: 6;
+    spacing: 8px;
+    scrollbar: false;
+}
+
+element {
+    padding: 12px 15px;
+    border-radius: 10px;
+    spacing: 15px;
+}
+
+element normal.normal, element alternate.normal { 
+    background-color: transparent; 
+}
+
+element selected.normal {
+    background-color: @selected;
+    text-color: @background;
+}
+
+element-icon {
+    size: 24px;
+    vertical-align: 0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-color: inherit;
+}

@@ -1,0 +1,92 @@
+/* Material You Variant C: theme selector */
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    modi: "drun";
+    show-icons: false;
+    display-drun: "󰄬 THEMES";
+    font: "CaskaydiaCove Nerd Font 12";
+}
+
+* {
+    background-color: transparent;
+    text-color: @foreground;
+    selected: @selected-normal-background;
+    surface-container-low: rgba(255, 255, 255, 0.03);
+    surface-container: rgba(255, 255, 255, 0.07);
+    surface-container-high: rgba(255, 255, 255, 0.11);
+    outline-variant: rgba(255, 255, 255, 0.16);
+    on-surface-variant: rgba(255, 255, 255, 0.70);
+}
+
+window {
+    location: center;
+    anchor: center;
+    width: 540px;
+    border: 1px solid;
+    border-color: var(outline-variant);
+    border-radius: 32px;
+    background-color: @background;
+}
+
+mainbox {
+    padding: 20px;
+    spacing: 12px;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: var(surface-container);
+    border-radius: 999px;
+    border: 1px solid;
+    border-color: var(surface-container-high);
+    padding: 12px 14px;
+    spacing: 10px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @selected;
+    font: "CaskaydiaCove Nerd Font Bold 13";
+    vertical-align: 0.5;
+}
+
+entry {
+    placeholder: "Buscar tema...";
+    placeholder-color: var(on-surface-variant);
+    text-color: @foreground;
+    vertical-align: 0.5;
+}
+
+listview {
+    columns: 1;
+    lines: 8;
+    spacing: 8px;
+    scrollbar: false;
+}
+
+element {
+    padding: 10px 12px;
+    border-radius: 18px;
+    border: 1px solid;
+    border-color: transparent;
+    background-color: var(surface-container-low);
+    text-color: @foreground;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color: var(surface-container-low);
+    text-color: @foreground;
+}
+
+element selected.normal {
+    background-color: var(surface-container);
+    border-color: @selected;
+    text-color: @foreground;
+}
+
+element-text {
+    text-color: inherit;
+    vertical-align: 0.5;
+}

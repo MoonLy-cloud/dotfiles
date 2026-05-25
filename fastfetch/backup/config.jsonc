@@ -1,0 +1,124 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  
+  // --- CONFIGURACIÓN DE LA IMAGEN (Kitty) ---
+  "logo": {
+      "type": "kitty",
+      "source": "~/.config/fastfetch/logo.png", // ¡Pon aquí tu imagen!
+      "width": 28,
+      "height": 14,
+      "padding": {
+          "top": 1,
+          "left": 2,
+          "right": 4
+      }
+  },
+
+  "display": {
+      "separator": "  ➜  ",
+      "color": {
+          "keys": "magenta",      // Color del texto izquierdo (Keys)
+          "title": "blue"         // Color del título (Usuario@Host)
+      },
+      "key": {
+        "width": 16 // Alineación perfecta
+      }
+  },
+
+  "modules": [
+      // --- TÍTULO ---
+      {
+          "type": "title",
+          "format": "{user-name}@{host-name}",
+          "keyColor": "blue"
+      },
+      {
+          "type": "custom",
+          "format": "--------------------------",
+          "outputColor": "35" // Color 35 es un rosa/morado
+      },
+
+      // --- SISTEMA (Moon Power) ---
+      {
+          "type": "os",
+          "key": "  OS",
+          "keyColor": "blue",
+          "format": "{3} {12}" // Muestra Arch Linux x86_64
+      },
+      {
+          "type": "kernel",
+          "key": "  Kernel",
+          "keyColor": "blue"
+      },
+      {
+          "type": "uptime",
+          "key": "  Tiempo",
+          "keyColor": "blue"
+      },
+      {
+          "type": "packages",
+          "key": "  Paquetes",
+          "keyColor": "blue"
+      },
+
+      // --- ENTORNO (Visuals) ---
+      {
+          "type": "wm",
+          "key": "  Hyprland",
+          "keyColor": "magenta"
+      },
+      {
+          "type": "theme",
+          "key": "  Tema",
+          "keyColor": "magenta"
+      },
+      {
+          "type": "icons",
+          "key": "  Iconos",
+          "keyColor": "magenta"
+      },
+      {
+          "type": "terminal",
+          "key": "  Terminal",
+          "keyColor": "magenta"
+      },
+      {
+          "type": "shell",
+          "key": "  Shell",
+          "keyColor": "magenta"
+      },
+
+      // --- HARDWARE (Cristal de Plata) ---
+      {
+          "type": "cpu",
+          "key": "  CPU",
+          "keyColor": "cyan",
+          "format": "{1}" // Solo nombre del modelo para que no sea texto kilométrico
+      },
+      {
+          "type": "gpu",
+          "key": "󰢮  GPU",
+          "keyColor": "cyan",
+          "format": "{2}" // Modelo limpio
+      },
+      {
+          "type": "memory",
+          "key": "  RAM",
+          "keyColor": "cyan"
+      },
+      {
+          "type": "disk",
+          "key": "  Disco",
+          "keyColor": "cyan",
+          "folders": "/" // Solo mostrar raíz
+      },
+
+      // --- FINAL (Colores) ---
+      "break",
+      {
+          "type": "colors",
+          "paddingLeft": 16, // Centrado bajo los datos
+          "symbol": "circle"
+      }
+  ]
+}

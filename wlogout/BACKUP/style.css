@@ -1,0 +1,72 @@
+/* 🌟 WLOGOUT: NERD FONTS SEGURO Y VIBRANTE 🌟 */
+
+window {
+    background-color: rgba(10, 10, 14, 0.6);
+}
+
+* {
+    background-image: none;
+    font-family: "CaskaydiaCove Nerd Font", sans-serif;
+}
+
+button {
+    /* Fondo transparente de cristal */
+    background-color: rgba(30, 30, 46, 0.5);
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 40px;
+
+    /* MÁRGENES SEGUROS (Separados para que GTK no crashee) */
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+    /* TAMAÑO DEL ICONO GIGANTE */
+    font-size: 80px;
+
+    /* Transición simple y segura */
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Forzar el tamaño en la etiqueta interna por si acaso */
+button label {
+    font-size: 80px;
+}
+
+/* --- COLORES VIBRANTES (Para el icono y su borde) --- */
+#lock {
+    color: #f9e2af;         /* Amarillo pastel */
+    border-color: #f9e2af;
+}
+
+#logout {
+    color: #89b4fa;         /* Azul claro */
+    border-color: #89b4fa;
+}
+
+#suspend {
+    color: #cba6f7;         /* Morado/Lila */
+    border-color: #cba6f7;
+}
+
+#hibernate {
+    color: #fab387;         /* Naranja */
+    border-color: #fab387;
+}
+
+#shutdown {
+    color: #f38ba8;         /* Rojo/Rosa */
+    border-color: #f38ba8;
+}
+
+#reboot {
+    color: #a6e3a1;         /* Verde */
+    border-color: #a6e3a1;
+}
+
+/* --- EFECTO AL PASAR EL MOUSE --- */
+button:hover {
+    background-color: rgba(60, 60, 80, 0.9);
+    border-color: #ffffff;
+}

@@ -1,0 +1,159 @@
+{
+    "modules-right": [
+        "custom/updates",
+        "pulseaudio",
+        "battery",
+        "custom/hardware",
+        "custom/dunst",
+        "tray",
+        "idle_inhibitor",
+        "custom/notification",
+        "clock"
+    ],
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw", /* Abre el panel lateral */
+        "on-click-right": "swaync-client -d -sw", /* Activa No Molestar */
+        "escape": true
+    },
+
+    "custom/updates": {
+        "format": "{}",
+        "return-type": "json",
+        // Ejecutar script
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "interval": 3600, // Revisar cada hora automáticamente
+        
+        // ¡LA MAGIA! Esto permite actualizar el numero al instante cuando termina el script
+        "signal": 8,
+        
+        // Clic izquierdo también actualiza por si no quieres usar el atajo
+        "on-click": "~/.config/waybar/scripts/updates.sh update",
+        "tooltip": true
+    },
+
+    "custom/dunst": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/dunst.sh",
+        "restart-interval": 1,
+        
+        // Clic Izquierdo: No Molestar (Toggle)
+        "on-click": "dunstctl set-paused toggle",
+        
+        // --- Clic Derecho: ABRIR HISTORIAL EN ROFI ---
+        "on-click-right": "~/.config/waybar/scripts/dunst_history.sh",
+        
+        // Clic Central: Borrar todo
+        "on-click-middle": "dunstctl close-all"
+    },
+
+   "custom/hardware": {
+        "format": "{}", 
+        "return-type": "json",
+        "interval": 3,  // Actualizar cada 3 segundos (para no saturar la CPU leyendo top)
+        "exec": "~/.config/waybar/scripts/sys_info.py",
+        "on-click": "kitty --class btop_float btop", // O 'btop', o 'gnome-system-monitor' lo que uses
+        "tooltip": true
+    },
+
+    "pulseaudio": {
+        // --- FORMATOS (Lo que se ve) ---
+        // 1. Normal: Icono + Vol% + Micrófono
+        "format": "{icon} {volume}%  {format_source}",
+        
+        // 2. Bluetooth: Icono + Logo BT + Vol% + Micrófono
+        "format-bluetooth": "{icon} {volume}%  {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
+        
+        // 3. Muteado (Salida): Icono Mute + Micrófono
+        "format-muted": "  {format_source}",
+
+        // --- MICROFONO (La parte dinámica) ---
+        // El {format_source} de arriba se reemplaza por esto:
+        "format-source": " {volume}%",   // Mic encendido
+        "format-source-muted": "",      // Mic apagado (solo icono)
+
+        // --- ICONOS VARIADOS ---
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        
+        // --- INTERACCIÓN ---
+        "on-click": "pavucontrol",
+        // Clic derecho para mutear el micrófono rápido
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle" 
+    },
+
+    "battery": {
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        // --- FORMATOS ---
+        // Desconectado: Icono + Porcentaje
+        "format": "{icon} {capacity}%",
+        
+        // Cargando: Enchufe + Porcentaje + (Tiempo para full)
+        "format-charging": " {capacity}% ({time})",
+        
+        // Carga llena y conectado
+        "format-plugged": " Cargado",
+        
+        // Formato de tiempo (ej: 1h 30m)
+        "format-time": "{H}h {M}m",
+        
+        // --- ICONOS DE NIVEL ---
+        "format-icons": ["", "", "", "", ""],
+
+        // --- INTERACCIÓN (Mantenemos tu script de MODO JUEGO) ---
+        "on-click": "~/.config/hypr/scripts/gamemode.sh",
+        
+        // --- TOOLTIP DETALLADO ---
+        // Muestra: Tiempo restante, Salud de batería y Consumo en Watts
+        "tooltip-format": "{timeTo}\nSalud: {health}%\nConsumo: {power}W"
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A, %d %B, %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    "idle_inhibitor": {
+    "format": "{icon}",
+    "start-activated": true,  // <--- ¡ESTA ES LA LÍNEA MÁGICA!
+    "format-icons": {
+        "activated": "",
+        "deactivated": ""
+    }
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10,
+        "show-passive-items": true
+    }
+}

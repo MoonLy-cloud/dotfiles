@@ -1,0 +1,70 @@
+{
+
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{icon}",
+        "on-click": "activate",
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "*": 5
+        },
+        "format-icons": {
+            "active": "■",
+            "occupied": "▣",
+            "default": "□"
+        }
+    },
+
+    "hyprland/window": {
+        "format": "{class}",
+        "max-length": 40,
+        "separate-outputs": true,
+        "rewrite": {
+            "":                          "Escritorio vacío  ",
+            "brave-browser":             "Brave  ",
+            "code":                      "VS Code 󰨞 ",
+            "(.*)Spotify":               "Spotify 󰓇 ",
+            "thunar":                    "Thunar 󰉓 ",
+            "yazi-drop":                 "Yazi Drop 󰉓 ",
+            "kitty":                     "Terminal  ",
+            "winboat":                   "Winboat 󰀲 ",
+            "xfreerdp":                  "Escritorio Remoto 󰢔 ",
+            "winboat-Microsoft Word":    "Word 󰀲 ",
+            "libreoffice-writer":        "LibreOffice Writer 󰀲 ",
+            "update_float":              "Actualizando ARCH... 󰚰 ",
+            "waypaper":                  "Waypaper 󰋩 ",
+            "VirtualBox Machine":        "VirtualBox 󰍹 ",
+            "blueman-manager":           "Bluetooth 󰂲 ",
+            "steam":                     "Steam 󰓇 ",
+            "com.discordapp.Discord":    "Discord  "
+        }
+    },
+
+    "custom/spotify": {
+        "format": "󰓇  {}",
+        "max-length": 40,
+        "interval": 1,
+        "exec": "playerctl metadata --player=spotify --format '{{artist}} - {{title}}' || echo 'No Music'",
+        "exec-if": "pgrep spotify",
+        "on-click": "playerctl --player=spotify play-pause",
+        "on-scroll-up": "playerctl --player=spotify next",
+        "on-scroll-down": "playerctl --player=spotify previous",
+        "tooltip": false
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "return-type": "json",
+        "interval": 600,
+        "exec": "~/.config/waybar/scripts/weather.py",
+        "on-click": "xdg-open https://openweathermap.org/city",
+        "tooltip": true
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10,
+        "show-passive-items": true
+    }
+}

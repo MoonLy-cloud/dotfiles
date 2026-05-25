@@ -1,0 +1,274 @@
+/* ================================================
+   1. VARIABLES Y COLORES POP
+   ================================================ */
+
+@import "/home/moonly/.cache/wal/colors-waybar.css";
+
+@define-color pop_bg      alpha(@background, 0.76);
+@define-color pop_bg_soft alpha(@background, 0.64);
+@define-color pop_line    alpha(@foreground, 0.26);
+@define-color pop_text    alpha(@foreground, 0.96);
+@define-color pop_dark    #141414;
+
+@define-color pop_pink      #ff5ea8;
+@define-color pop_orange    #ff9f43;
+@define-color pop_yellow    #ffd93d;
+@define-color pop_blue      #4cc9f0;
+@define-color pop_lilac     #b892ff;
+@define-color pop_teal      #2dd4bf;
+@define-color spotify_green #1db954;
+
+/* ================================================
+   2. ESTILOS GLOBALES BASE
+   ================================================ */
+
+* {
+    font-family: "CaskaydiaCove Nerd Font";
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.16s ease;
+}
+
+window#waybar {
+    background: transparent;
+    color: @pop_text;
+}
+
+/* ================================================
+   3. ESTILOS DE MÓDULOS (APLICA A TOP BAR POR DEFECTO)
+   ================================================ */
+
+/* Contenedores por defecto (Formato Cápsula Horizontal) */
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+    background: @pop_bg;
+    color: @pop_text;
+    border: 1px solid @pop_line;
+    border-radius: 999px;
+    margin: 5px 3px;
+    padding: 6px 13px;
+    text-shadow: 0 1px 2px alpha(#000000, 0.30);
+    box-shadow: 0 2px 5px alpha(#000000, 0.22);
+}
+
+.modules-left > widget > *:hover,
+.modules-center > widget > *:hover,
+.modules-right > widget > *:hover {
+    background: alpha(@background, 0.90);
+}
+
+/* ================================================
+   4. OVERRIDES PARA LA BARRA IZQUIERDA (VERTICAL)
+   ================================================ */
+
+/* Forzamos el formato de cápsula delgada vertical */
+window#waybar.left-bar .modules-center > widget > *,
+window#waybar.left-bar .modules-left > widget > *,
+window#waybar.left-bar .modules-right > widget > * {
+    margin: 5px 2px;
+    padding: 12px 2px;
+    min-width: 24px;
+    min-height: 35px;
+    border-radius: 20px;
+}
+
+/* Launcher */
+window#waybar.left-bar #custom-launcher {
+    padding: 0px 4px;
+}
+
+/* Workspaces Verticales */
+window#waybar.left-bar #workspaces {
+    padding: 6px 0px;
+}
+
+window#waybar.left-bar #workspaces button {
+    padding: 6px 0px;
+    margin: 2px 2px;
+    min-width: 20px;
+    border-radius: 999px;
+}
+
+/* Ajustes específicos de padding para módulos verticales */
+window#waybar.left-bar #custom-updates,
+window#waybar.left-bar #pulseaudio {
+    padding: 10px 0px; 
+}
+
+window#waybar.left-bar #tray {
+    padding: 6px 2px;
+}
+
+/* ================================================
+   5. COLORES Y ESTADOS ESPECÍFICOS DE MÓDULOS
+   (Aplica a ambas barras según se usen)
+   ================================================ */
+
+/* Workspaces (Colores y Estados) */
+#workspaces {
+    background: alpha(@background, 0.88);
+    border: 1px solid alpha(@pop_lilac, 0.54);
+    padding: 0 6px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: alpha(@foreground, 0.62);
+    padding: 3px 0px;
+    margin: 0 1px;
+    min-width: 20px;
+}
+
+#workspaces button.occupied {
+    color: alpha(@foreground, 0.84);
+}
+
+#workspaces button.active {
+    background: alpha(@pop_lilac, 0.58);
+    color: @pop_dark;
+    text-shadow: none;
+}
+
+#workspaces button:hover {
+    background: alpha(@pop_lilac, 0.32);
+    color: @pop_text;
+}
+
+/* Window Title */
+#window {
+    min-width: 260px;
+    color: alpha(@foreground, 0.80);
+    font-style: normal;
+    border-color: alpha(@pop_blue, 0.36);
+}
+
+/* Reloj */
+#clock {
+    background: alpha(@pop_pink, 0.56);
+    border-color: alpha(@pop_pink, 0.86);
+    color: @pop_dark;
+    letter-spacing: 0.08em;
+    font-size: 15px;
+    padding: 6px 16px; /* Se mantendrá horizontal en la Top Bar */
+}
+
+/* Clima */
+#custom-weather {
+    background: alpha(@pop_blue, 0.54);
+    border-color: alpha(@pop_blue, 0.84);
+    color: @pop_dark;
+}
+
+/* Actualizaciones */
+#custom-updates {
+    background: alpha(@pop_orange, 0.58);
+    border-color: alpha(@pop_orange, 0.86);
+    color: @pop_dark;
+}
+#custom-updates.updated, #custom-updates.none {
+    background: alpha(@pop_teal, 0.56);
+    border-color: alpha(@pop_teal, 0.84);
+}
+#custom-updates.warning {
+    background: alpha(@pop_yellow, 0.62);
+    border-color: alpha(@pop_yellow, 0.90);
+}
+#custom-updates.critical, #custom-updates.error {
+    background: alpha(#fb7185, 0.66);
+    border-color: alpha(#fb7185, 0.90);
+}
+
+/* Spotify */
+#custom-spotify {
+    background: alpha(@spotify_green, 0.60);
+    border-color: alpha(@spotify_green, 0.90);
+    color: @pop_dark;
+    min-width: 240px;
+}
+#custom-spotify:hover {
+    background: alpha(@spotify_green, 0.68);
+}
+
+/* Audio */
+#pulseaudio {
+    background: alpha(@pop_lilac, 0.58);
+    border-color: alpha(@pop_lilac, 0.86);
+    color: @pop_dark;
+}
+#pulseaudio.bluetooth {
+    background: alpha(@pop_blue, 0.58);
+    border-color: alpha(@pop_blue, 0.86);
+}
+#pulseaudio.muted, #pulseaudio.source-muted {
+    background: @pop_bg_soft;
+    color: alpha(@foreground, 0.72);
+    border-color: @pop_line;
+}
+
+/* Batería */
+#battery {
+    background: alpha(@background, 0.86);
+    color: @pop_text;
+    border-color: alpha(@pop_teal, 0.40);
+}
+#battery.charging, #battery.plugged {
+    background: alpha(@pop_teal, 0.58);
+    border-color: alpha(@pop_teal, 0.88);
+    color: @pop_dark;
+}
+#battery.warning:not(.charging) {
+    background: alpha(@pop_yellow, 0.60);
+    border-color: alpha(@pop_yellow, 0.90);
+    color: @pop_dark;
+}
+#battery.critical:not(.charging) {
+    background: alpha(#fb7185, 0.68);
+    border-color: alpha(#fb7185, 0.92);
+    color: @pop_dark;
+    animation: blink 1s linear infinite;
+}
+
+/* Animaciones */
+@keyframes blink {
+    50% { opacity: 0.55; }
+}
+
+/* Idle Inhibitor */
+#idle_inhibitor {
+    background: alpha(@pop_teal, 0.48);
+    border-color: alpha(@pop_teal, 0.80);
+    color: @pop_dark;
+}
+#idle_inhibitor.activated {
+    background: alpha(@pop_pink, 0.58);
+    border-color: alpha(@pop_pink, 0.88);
+}
+
+/* Contenedores Mixtos */
+#custom-notification,
+#custom-dunst,
+#tray {
+    background: alpha(@background, 0.80);
+    border-color: alpha(@pop_lilac, 0.42);
+    color: @pop_text;
+}
+
+/* ================================================
+   6. TOOLTIPS
+   ================================================ */
+
+tooltip {
+    background: alpha(@background, 0.96);
+    border: 1px solid alpha(@pop_blue, 0.52);
+    border-radius: 12px;
+    padding: 7px 12px;
+}
+
+tooltip label {
+    color: @pop_text;
+}

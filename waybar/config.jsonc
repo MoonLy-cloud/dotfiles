@@ -1,0 +1,58 @@
+[
+    {
+    "name": "top-bar",
+    "layer": "top",
+    "exclusive": "false",
+    "position": "top",
+    "spacing": 0,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    "include": [
+        "~/.config/waybar/Configs-way/TOP-LEFT-POPCOLOR/modules/top-bar/left.jsonc",
+        "~/.config/waybar/Configs-way/TOP-LEFT-POPCOLOR/modules/top-bar/center.jsonc",
+        "~/.config/waybar/Configs-way/TOP-LEFT-POPCOLOR/modules/top-bar/right.jsonc"
+    ],
+    "modules-left": [
+        "hyprland/window",
+        "custom/weather"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/spotify",
+        "custom/hardware",
+        "battery",
+        "idle_inhibitor"
+    ]
+    },
+
+    {
+    "name": "left-bar",
+    "layer": "left",
+    "exclusive": "false",
+    "position": "left",
+    "spacing": 0,
+    "width": 0,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    "include": [
+        "~/.config/waybar/Configs-way/TOP-LEFT-POPCOLOR/modules/left-bar/left.jsonc",
+        "~/.config/waybar/Configs-way/TOP-LEFT-POPCOLOR/modules/left-bar/center.jsonc",
+        "~/.config/waybar/Configs-way/TOP-LEFT-POPCOLOR/modules/left-bar/right.jsonc"
+    ],
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "custom/updates",
+        "pulseaudio",
+        "tray"
+    ]
+    }
+]

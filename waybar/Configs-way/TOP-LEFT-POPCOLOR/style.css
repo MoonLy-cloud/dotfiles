@@ -1,0 +1,396 @@
+/* ================================================
+   MATERIAL DESIGN 3 - PYWAL THEME
+   Dynamic theming based on wallpaper colors
+   ================================================ */
+
+@import "/home/moonly/.cache/wal/colors-waybar.css";
+
+/* Material Design Color Palette */
+@define-color md_primary      @color5;        /* Azul suave - Primary */
+@define-color md_secondary    @color3;        /* Rosa suave - Secondary */
+@define-color md_tertiary     @color4;        /* Naranja/Melocotón - Tertiary */
+@define-color md_surface      @background;    /* Surface base */
+@define-color md_surface_dim  alpha(@background, 0.80);
+@define-color md_surface_mid  alpha(@background, 0.90);
+@define-color md_text         @foreground;    /* Text on surface */
+@define-color md_text_secondary alpha(@foreground, 0.72);
+@define-color md_text_tertiary alpha(@foreground, 0.55);
+@define-color md_outline      alpha(@foreground, 0.30);
+@define-color md_outline_variant alpha(@foreground, 0.18);
+
+/* Elevation & States */
+@define-color md_error        @color11;       /* Error color */
+@define-color md_on_primary   @color0;        /* Text on primary */
+@define-color md_on_secondary @color0;        /* Text on secondary */
+@define-color md_on_tertiary  @color0;        /* Text on tertiary */
+@define-color md_on_error     @foreground;    /* Text on error */
+
+/* State Overlays (Interactive states) */
+@define-color md_state_hover   alpha(@foreground, 0.08);
+@define-color md_state_pressed alpha(@foreground, 0.12);
+@define-color md_state_focus   alpha(@foreground, 0.10);
+@define-color md_state_disabled alpha(@foreground, 0.38);
+
+/* ================================================
+   GLOBAL STYLES - Material Design Base
+   ================================================ */
+
+* {
+    font-family: "CaskaydiaCove Nerd Font", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+window#waybar {
+    background: transparent;
+    color: @md_text;
+}
+
+/* ================================================
+   MODULE CONTAINERS - Material Design Surfaces
+   ================================================ */
+
+/* Surface containers for modules (default horizontal capsule format) */
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+    background: @md_surface_mid;
+    color: @md_text;
+    border: 1px solid @md_outline;
+    border-radius: 12px;
+    margin: 6px 4px;
+    padding: 8px 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.modules-left > widget > *:hover,
+.modules-center > widget > *:hover,
+.modules-right > widget > *:hover {
+    background: @md_surface_mid;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15),
+                0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* ================================================
+   VERTICAL BAR (Left) - Material Design Adjustments
+   ================================================ */
+
+/* Thin vertical capsule format */
+window#waybar.left-bar .modules-center > widget > *,
+window#waybar.left-bar .modules-left > widget > *,
+window#waybar.left-bar .modules-right > widget > * {
+    margin: 6px 3px;
+    padding: 12px 4px;
+    min-width: 26px;
+    min-height: 38px;
+    border-radius: 14px;
+}
+
+/* Launcher */
+window#waybar.left-bar #custom-launcher {
+    padding: 2px 6px;
+    border-radius: 14px;
+}
+
+/* Workspaces Vertical */
+window#waybar.left-bar #workspaces {
+    background: @md_surface_dim;
+    border: 1px solid @md_outline_variant;
+    border-radius: 14px;
+    padding: 8px 2px;
+}
+
+window#waybar.left-bar #workspaces button {
+    padding: 8px 0px;
+    margin: 3px 3px;
+    min-width: 22px;
+    border-radius: 10px;
+    transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Vertical module padding adjustments */
+window#waybar.left-bar #custom-updates,
+window#waybar.left-bar #pulseaudio {
+    padding: 10px 2px; 
+}
+
+window#waybar.left-bar #tray {
+    padding: 8px 3px;
+}
+
+/* ================================================
+   MODULE-SPECIFIC STYLING - Material Design Colors
+   ================================================ */
+
+/* Workspaces - Primary accent */
+#workspaces {
+    background: alpha(@md_primary, 0.12);
+    border: 1px solid alpha(@md_primary, 0.25);
+    border-radius: 12px;
+    padding: 0 8px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: @md_text_tertiary;
+    padding: 4px 0px;
+    margin: 0 2px;
+    min-width: 22px;
+    font-weight: 600;
+}
+
+#workspaces button.occupied {
+    color: @md_text_secondary;
+}
+
+#workspaces button.active {
+    background: @md_primary;
+    color: @md_on_primary;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+#workspaces button:hover {
+    background: alpha(@md_primary, 0.20);
+    color: @md_text;
+}
+
+/* Window Title - Secondary surface */
+#window {
+    min-width: 260px;
+    color: @md_text;
+    border-color: @md_outline;
+    background: @md_surface_mid;
+    border: 1px solid @md_outline;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* Clock - Primary accent */
+#clock {
+    background: @md_primary;
+    border-color: @md_primary;
+    color: @md_on_primary;
+    border-radius: 12px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#clock:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+                0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* Weather - Tertiary accent */
+#custom-weather {
+    background: @md_tertiary;
+    border-color: @md_tertiary;
+    color: @md_on_tertiary;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#custom-weather:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+                0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* Updates - Secondary accent with state variants */
+#custom-updates {
+    background: @md_secondary;
+    border-color: @md_secondary;
+    color: @md_on_secondary;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#custom-updates.updated, 
+#custom-updates.none {
+    background: alpha(@color13, 0.75);
+    border-color: alpha(@color13, 0.85);
+    color: @md_on_secondary;
+}
+
+#custom-updates.warning {
+    background: alpha(@md_tertiary, 0.80);
+    border-color: @md_tertiary;
+    color: @md_on_tertiary;
+}
+
+#custom-updates.critical, 
+#custom-updates.error {
+    background: @md_error;
+    border-color: @md_error;
+    color: @md_on_error;
+    animation: md-pulse 2s ease-in-out infinite;
+}
+
+#custom-updates:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+                0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* Spotify - Spotify green primary */
+#custom-spotify {
+    background: #1DB954;
+    border-color: #1DB954;
+    color: @foreground;
+    border-radius: 12px;
+    min-width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15),
+                0 1px 2px rgba(0, 0, 0, 0.12);
+    font-weight: 500;
+}
+
+#custom-spotify:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18),
+                0 2px 4px rgba(0, 0, 0, 0.15);
+    background: #1ed760;
+    border-color: #1ed760;
+}
+
+/* Audio - Primary accent */
+#pulseaudio {
+    background: @md_primary;
+    border-color: @md_primary;
+    color: @md_on_primary;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#pulseaudio.bluetooth {
+    background: alpha(@color13, 0.70);
+    border-color: alpha(@color13, 0.85);
+    color: @md_on_secondary;
+}
+
+#pulseaudio.muted, 
+#pulseaudio.source-muted {
+    background: @md_surface_dim;
+    color: @md_text_secondary;
+    border-color: @md_outline_variant;
+    opacity: 0.6;
+}
+
+#pulseaudio:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+                0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* Battery - Status-based coloring */
+#battery {
+    background: @md_surface_mid;
+    color: @md_text;
+    border-color: @md_outline_variant;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#battery.charging, 
+#battery.plugged {
+    background: alpha(@color13, 0.75);
+    border-color: alpha(@color13, 0.85);
+    color: @md_on_secondary;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#battery.warning:not(.charging) {
+    background: @md_tertiary;
+    border-color: @md_tertiary;
+    color: @md_on_tertiary;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#battery.critical:not(.charging) {
+    background: @md_error;
+    border-color: @md_error;
+    color: @md_on_error;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.20),
+                0 2px 4px rgba(0, 0, 0, 0.15);
+    animation: md-pulse 1.5s ease-in-out infinite;
+}
+
+/* Idle Inhibitor - State-based */
+#idle_inhibitor {
+    background: @md_surface_mid;
+    border-color: @md_outline_variant;
+    color: @md_text_secondary;
+    border-radius: 12px;
+}
+
+#idle_inhibitor.activated {
+    background: @md_tertiary;
+    border-color: @md_tertiary;
+    color: @md_on_tertiary;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12),
+                0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* Mixed Containers - Subtle surfaces */
+#custom-notification,
+#custom-dunst,
+#tray {
+    background: alpha(@md_primary, 0.08);
+    border-color: @md_outline_variant;
+    color: @md_text;
+    border-radius: 12px;
+}
+
+/* ================================================
+   ANIMATIONS - Material Design Motion
+   ================================================ */
+
+@keyframes md-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.15);
+    }
+    50% {
+        box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.15);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* ================================================
+   TOOLTIPS - Material Design Cards
+   ================================================ */
+
+tooltip {
+    background: alpha(@md_surface, 0.95);
+    border: 1px solid @md_outline;
+    border-radius: 8px;
+    padding: 10px 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18),
+                0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+tooltip label {
+    color: @md_text;
+    font-weight: 500;
+    font-size: 12px;
+}

@@ -1,0 +1,56 @@
+{
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification":              "󰂚",
+            "none":                      "󰂜",
+            "dnd-notification":          "󰂛",
+            "dnd-none":                  "󰪑",
+            "inhibited-notification":    "󰂚",
+            "inhibited-none":            "󰂜",
+            "dnd-inhibited-notification":"󰂛",
+            "dnd-inhibited-none":        "󰪑"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": false
+    },
+
+    "custom/dunst": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "bash ~/.config/waybar/scripts/dunst.sh",
+        "restart-interval": 1,
+        "on-click": "dunstctl set-paused toggle",
+        "on-click-right": "~/.config/waybar/scripts/dunst_history.sh",
+        "on-click-middle": "dunstctl close-all"
+    },
+
+    "battery": {
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}% ({time})",
+        "format-plugged": "󰚥 Cargado",
+        "format-time": "{H}h {M}m",
+        "format-icons": ["󰂎", "󰁺", "󰁼", "󰁾", "󰂂"],
+        "on-click": "~/.config/hypr/scripts/gamemode.sh",
+        "tooltip-format": "{timeTo}\nSalud: {health}%\nConsumo: {power}W"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "start-activated": true,
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰛊"
+        }
+    }
+}

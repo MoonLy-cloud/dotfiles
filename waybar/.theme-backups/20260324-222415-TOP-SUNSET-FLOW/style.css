@@ -1,0 +1,169 @@
+/* ================================================
+   VAPORWAVE NIGHT — neon pastel geometry
+   ================================================ */
+
+@import "/home/moonly/.cache/wal/colors-waybar.css";
+
+@define-color vw_bg       alpha(@background, 0.78);
+@define-color vw_bg_soft  alpha(@background, 0.66);
+@define-color vw_text     alpha(@foreground, 0.96);
+@define-color vw_text_dim alpha(@foreground, 0.72);
+@define-color vw_pink     #ff6ec7;
+@define-color vw_cyan     #48d6ff;
+@define-color vw_lilac    #b892ff;
+@define-color vw_sun      #ffd166;
+@define-color vw_dark     #180e27;
+
+* {
+    font-family: "MonaspiceNe Nerd Font";
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.16s ease;
+}
+
+window#waybar {
+    background: transparent;
+    color: @vw_text;
+}
+
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+    background: @vw_bg;
+    color: @vw_text;
+    border: 1px solid alpha(@vw_cyan, 0.38);
+    border-radius: 16px 4px 16px 4px;
+    margin: 5px 3px;
+    padding: 6px 12px;
+    text-shadow: 0 0 6px alpha(@vw_cyan, 0.30);
+    box-shadow: 0 0 10px alpha(@vw_pink, 0.20), inset 0 1px 0 alpha(#ffffff, 0.08);
+}
+
+.modules-left > widget > *:hover,
+.modules-center > widget > *:hover,
+.modules-right > widget > *:hover {
+    background: alpha(@background, 0.90);
+    border-color: alpha(@vw_pink, 0.60);
+}
+
+#workspaces {
+    background: alpha(@vw_dark, 0.70);
+    border: 1px solid alpha(@vw_lilac, 0.58);
+    border-radius: 16px;
+    padding: 0 6px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: alpha(@foreground, 0.56);
+    border: none;
+    border-radius: 12px;
+    padding: 3px 7px;
+    margin: 0 1px;
+    min-width: 20px;
+}
+
+#workspaces button.occupied {
+    color: alpha(@vw_cyan, 0.84);
+}
+
+#workspaces button.active {
+    background: alpha(@vw_pink, 0.60);
+    color: @vw_dark;
+    text-shadow: none;
+}
+
+#window {
+    min-width: 240px;
+    color: @vw_text_dim;
+    font-style: italic;
+    border-color: alpha(@vw_lilac, 0.44);
+}
+
+#custom-weather {
+    background: alpha(@vw_cyan, 0.52);
+    border-color: alpha(@vw_cyan, 0.84);
+    color: @vw_dark;
+}
+
+#custom-spotify {
+    background: alpha(@vw_pink, 0.56);
+    border-color: alpha(@vw_pink, 0.88);
+    color: @vw_dark;
+    min-width: 250px;
+}
+
+#clock {
+    background: alpha(@vw_lilac, 0.62);
+    border-color: alpha(@vw_lilac, 0.90);
+    color: @vw_dark;
+    font-size: 15px;
+    letter-spacing: 0.09em;
+    padding: 6px 18px;
+}
+
+#custom-updates,
+#pulseaudio,
+#idle_inhibitor.activated {
+    background: alpha(@vw_sun, 0.60);
+    border-color: alpha(@vw_sun, 0.88);
+    color: @vw_dark;
+}
+
+#battery {
+    background: alpha(@vw_bg_soft, 0.92);
+    border-color: alpha(@vw_lilac, 0.44);
+    color: @vw_text;
+}
+
+#battery.charging,
+#battery.plugged,
+#custom-updates.updated,
+#custom-updates.none {
+    background: alpha(@color2, 0.56);
+    border-color: alpha(@color2, 0.86);
+    color: @vw_dark;
+}
+
+#battery.warning:not(.charging),
+#custom-updates.warning {
+    background: alpha(@vw_sun, 0.66);
+    color: @vw_dark;
+}
+
+#battery.critical:not(.charging),
+#custom-updates.critical,
+#custom-updates.error {
+    background: alpha(#ff5fa2, 0.68);
+    border-color: alpha(#ff5fa2, 0.92);
+    color: @vw_dark;
+    animation: shimmer 1s linear infinite;
+}
+
+@keyframes shimmer {
+    50% { opacity: 0.56; }
+}
+
+#custom-notification,
+#custom-dunst,
+#idle_inhibitor,
+#tray {
+    background: alpha(@vw_dark, 0.68);
+    border-color: alpha(@vw_lilac, 0.42);
+}
+
+tooltip {
+    background: alpha(@vw_dark, 0.94);
+    border: 1px solid alpha(@vw_cyan, 0.56);
+    border-radius: 12px;
+    color: @vw_text;
+    padding: 7px 12px;
+}
+
+tooltip label {
+    color: @vw_text;
+}

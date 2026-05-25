@@ -1,0 +1,30 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 2,
+    "margin-top": 8,
+    "margin-left": 14,
+    "margin-right": 14,
+    "margin-bottom": 0,
+    "include": [
+        "~/.config/waybar/Configs-way/TOP-MINIMAL-MONO/modules/left.jsonc",
+        "~/.config/waybar/Configs-way/TOP-MINIMAL-MONO/modules/center.jsonc",
+        "~/.config/waybar/Configs-way/TOP-MINIMAL-MONO/modules/right.jsonc"
+    ],
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/weather",
+        "custom/updates",
+        "battery",
+        "pulseaudio",
+        "custom/notification",
+        "tray"
+    ]
+}

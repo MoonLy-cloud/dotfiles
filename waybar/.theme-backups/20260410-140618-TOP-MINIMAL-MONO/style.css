@@ -1,0 +1,134 @@
+/* ================================================
+   FOREST OPS — tactical green
+   ================================================ */
+
+@import "/home/moonly/.cache/wal/colors-waybar.css";
+
+@define-color ops_bg    alpha(@background, 0.84);
+@define-color ops_bg_2  alpha(@background, 0.94);
+@define-color ops_line  alpha(#34d399, 0.44);
+@define-color ops_text  alpha(@foreground, 0.96);
+@define-color ops_soft  alpha(@foreground, 0.70);
+@define-color ops_green #34d399;
+@define-color ops_lime  #a3e635;
+@define-color ops_red   #fb7185;
+
+* {
+    font-family: "MonaspiceAr Nerd Font";
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @ops_text;
+}
+
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+    background: @ops_bg;
+    color: @ops_text;
+    border: 1px solid @ops_line;
+    border-radius: 4px;
+    margin: 4px 2px;
+    padding: 5px 10px;
+    box-shadow: inset 0 0 0 1px alpha(#000000, 0.22);
+}
+
+#workspaces {
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+#workspaces button {
+    background: @ops_bg_2;
+    color: alpha(@foreground, 0.56);
+    border: 1px solid alpha(@foreground, 0.20);
+    border-radius: 3px;
+    margin: 0 1px;
+    min-width: 20px;
+    padding: 2px 5px;
+}
+
+#workspaces button.occupied {
+    color: @ops_text;
+}
+
+#workspaces button.active {
+    background: alpha(@ops_green, 0.38);
+    color: #08130e;
+    border-color: alpha(@ops_green, 0.85);
+}
+
+#window {
+    min-width: 320px;
+    color: @ops_soft;
+}
+
+#custom-updates,
+#custom-dunst,
+#custom-weather,
+#pulseaudio,
+#idle_inhibitor,
+#custom-notification,
+#clock,
+#battery {
+    border-left: 3px solid alpha(@ops_green, 0.74);
+}
+
+#custom-updates,
+#custom-weather,
+#pulseaudio,
+#clock {
+    background: alpha(@ops_green, 0.24);
+    color: #0b1711;
+}
+
+#battery {
+    background: alpha(@foreground, 0.10);
+}
+
+#battery.charging,
+#battery.plugged,
+#custom-updates.updated,
+#custom-updates.none,
+#idle_inhibitor.activated {
+    background: alpha(@ops_green, 0.38);
+    color: #08130e;
+}
+
+#battery.warning:not(.charging),
+#custom-updates.warning {
+    background: alpha(@ops_lime, 0.42);
+    color: #111111;
+}
+
+#battery.critical:not(.charging),
+#custom-updates.critical,
+#custom-updates.error {
+    background: alpha(@ops_red, 0.52);
+    border-color: alpha(@ops_red, 0.84);
+    color: #111111;
+}
+
+#tray {
+    background: @ops_bg_2;
+}
+
+tooltip {
+    background: alpha(@background, 0.98);
+    border: 1px solid alpha(@ops_green, 0.50);
+    border-radius: 4px;
+    color: @ops_text;
+    padding: 6px 10px;
+}
+
+tooltip label {
+    color: @ops_text;
+}

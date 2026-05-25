@@ -1,0 +1,119 @@
+{
+    "modules-right": [
+        "custom/updates",
+        "pulseaudio",
+        "battery",
+        "custom/hardware",
+        "custom/dunst",
+        "tray",
+        "idle_inhibitor",
+        "custom/notification",
+        "clock"
+    ],
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification":              "󰂚",
+            "none":                      "󰂜",
+            "dnd-notification":          "󰂛",
+            "dnd-none":                  "󰪑",
+            "inhibited-notification":    "󰂚",
+            "inhibited-none":            "󰂜",
+            "dnd-inhibited-notification":"󰂛",
+            "dnd-inhibited-none":        "󰪑"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": false
+    },
+
+    "custom/updates": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "interval": 3600,
+        "signal": 8,
+        "on-click": "~/.config/waybar/scripts/updates.sh update",
+        "tooltip": true
+    },
+
+    "custom/dunst": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/dunst.sh",
+        "restart-interval": 1,
+        "on-click": "dunstctl set-paused toggle",
+        "on-click-right": "~/.config/waybar/scripts/dunst_history.sh",
+        "on-click-middle": "dunstctl close-all"
+    },
+
+    "custom/hardware": {
+        "format": "{}",
+        "return-type": "json",
+        "interval": 3,
+        "exec": "~/.config/waybar/scripts/sys_info.py",
+        "on-click": "kitty --class btop_float btop",
+        "tooltip": true
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%  {format_source}",
+        "format-bluetooth": "{icon} {volume}%  {format_source}",
+        "format-bluetooth-muted": "󰂲 {icon}  {format_source}",
+        "format-muted": "󰝟  {format_source}",
+        "format-source": "󰍬 {volume}%",
+        "format-source-muted": "󰍭",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰄝",
+            "car": "󰄋",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+    },
+
+    "battery": {
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}% ({time})",
+        "format-plugged": "󰚥 Cargado",
+        "format-time": "{H}h {M}m",
+        "format-icons": ["󰂎", "󰁺", "󰁼", "󰁾", "󰂂"],
+        "on-click": "~/.config/hypr/scripts/gamemode.sh",
+        "tooltip-format": "{timeTo}\nSalud: {health}%\nConsumo: {power}W"
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A, %d %B, %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "start-activated": true,
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰛊"
+        }
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10,
+        "show-passive-items": true
+    }
+}

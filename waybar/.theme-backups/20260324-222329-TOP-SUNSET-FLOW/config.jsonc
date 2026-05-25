@@ -1,0 +1,39 @@
+{
+    // --- CONFIGURACIÓN GLOBAL ---
+    "layer": "top",
+    "position": "top",
+    "height": 44,
+    "spacing": 8,
+    "margin-top": 8,
+    "margin-left": 14,
+    "margin-right": 14,
+    "margin-bottom": 2,
+
+    // --- IMPORTAR MÓDULOS ---
+    "include": [
+        "~/.config/waybar/modules/left.jsonc",
+        "~/.config/waybar/modules/center.jsonc",
+        "~/.config/waybar/modules/right.jsonc"
+    ],
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/weather",
+        "hyprland/window"
+    ],
+
+    "modules-center": [
+        "custom/spotify",
+        "clock"
+    ],
+
+    "modules-right": [
+        "custom/updates",
+        "pulseaudio",
+        "battery",
+        "custom/notification",
+        "idle_inhibitor",
+        "custom/dunst",
+        "tray"
+    ]
+}

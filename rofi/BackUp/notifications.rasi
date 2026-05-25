@@ -1,0 +1,98 @@
+/* --- TEMA TOKYO NIGHT PARA NOTIFICACIONES --- */
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+configuration {
+    font: "JetBrainsMono Nerd Font 10";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    display-drun: "";
+    drun-display-format: "{name}";
+    disable-history: false;
+    sidebar-mode: false;
+}
+
+* {
+    background-color: @background;
+    text-color: @foreground;
+    selected: @selected-normal-background;
+    accent: @active-background;
+    urgent: @urgent-background;
+}
+
+window {
+    transparency: "real";
+    background-color: @background;
+    text-color: @foreground;
+    border: 2px;
+    border-color: @border-color;
+    border-radius: 12px;
+    
+    /* POSICIÓN: Arriba a la derecha (estilo Centro de Notificaciones) */
+    location: northeast;
+    anchor: northeast;
+    x-offset: -15px; /* Separación del borde derecho */
+    y-offset: 55px;  /* Separación de arriba (para no tapar la Waybar) */
+    
+    width: 500px;    /* Ancho suficiente para leer mensajes */
+    height: 400px;   /* Altura fija */
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ inputbar, listview ];
+    spacing: 10px;
+    padding: 10px;
+}
+
+inputbar {
+    background-color: @background-alt;
+    text-color: @foreground;
+    border-radius: 8px;
+    padding: 8px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @selected;
+    padding: 0 10px 0 0;
+}
+
+entry {
+    placeholder: "Buscar en historial...";
+    placeholder-color: #565f89;
+    text-color: @foreground;
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 7;
+    spacing: 5px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+}
+
+element {
+    background-color: transparent;
+    text-color: @foreground;
+    orientation: horizontal;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+element-icon {
+    size: 24px;
+    margin: 0 10px 0 0;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element selected {
+    background-color: @selected;
+    text-color: #1a1b26; /* Texto oscuro al seleccionar para contraste */
+}

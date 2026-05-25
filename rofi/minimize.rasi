@@ -1,0 +1,96 @@
+/* Material You Variant C: minimize switcher */
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    font: "CaskaydiaCove Nerd Font Bold 12";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    markup: true;
+}
+
+* {
+    background-color: @background;
+    text-color: @foreground;
+    selected: @selected-normal-background;
+    accent: @active-background;
+    urgent: @urgent-background;
+    surface-container-low: rgba(255, 255, 255, 0.03);
+    surface-container: rgba(255, 255, 255, 0.07);
+    surface-container-high: rgba(255, 255, 255, 0.11);
+    outline-variant: rgba(255, 255, 255, 0.16);
+    on-surface-variant: rgba(255, 255, 255, 0.70);
+}
+
+window {
+    transparency: "real";
+    width: 620px;
+    border: 1px;
+    border-color: var(outline-variant);
+    border-radius: 30px;
+    padding: 14px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing: 10px;
+}
+
+inputbar {
+    background-color: var(surface-container);
+    border: 1px solid;
+    border-color: var(surface-container-high);
+    border-radius: 999px;
+    children: [ prompt, entry ];
+    padding: 10px 12px;
+    spacing: 10px;
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @selected;
+    padding: 0px;
+}
+
+entry {
+    padding: 0px;
+    background-color: transparent;
+    border-radius: 0px;
+    placeholder: "Busca...";
+    placeholder-color: var(on-surface-variant);
+}
+
+listview {
+    lines: 6;
+    columns: 1;
+    scrollbar: false;
+    spacing: 6px;
+    margin: 2px 0 0 0;
+}
+
+element {
+    padding: 9px 10px;
+    border-radius: 18px;
+    border: 1px solid;
+    border-color: transparent;
+    background-color: var(surface-container-low);
+    orientation: horizontal;
+    spacing: 10px;
+}
+
+element selected {
+    background-color: var(surface-container);
+    border-color: @selected;
+    text-color: @foreground;
+}
+
+element-icon {
+    size: 26px;
+    background-color: transparent;
+    vertical-align: 0.5;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}

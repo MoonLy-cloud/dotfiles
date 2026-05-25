@@ -1,0 +1,213 @@
+/* ================================================
+   BLADE BAR — diseño geométrico / industrial
+   ================================================ */
+
+@import "../../.cache/wal/colors-waybar.css";
+
+@define-color steel_bg      alpha(@background, 0.78);
+@define-color steel_bg_hard alpha(@background, 0.90);
+@define-color steel_border  alpha(@foreground, 0.30);
+@define-color steel_text    alpha(@foreground, 0.95);
+@define-color steel_soft    alpha(@foreground, 0.74);
+@define-color steel_dark    #111111;
+
+@define-color tone_blue   #60a5fa;
+@define-color tone_orange #f59e0b;
+@define-color tone_green  #34d399;
+@define-color tone_rose   #fb7185;
+@define-color tone_violet #a78bfa;
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 12px;
+    font-weight: 700;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.22s ease, border-color 0.22s ease, color 0.18s ease;
+}
+
+window#waybar {
+    background: transparent;
+    color: @steel_text;
+}
+
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+    background: @steel_bg;
+    color: @steel_text;
+    border: 1px solid @steel_border;
+    border-radius: 8px 3px 8px 3px;
+    margin: 5px 4px;
+    padding: 6px 12px;
+    min-height: 0;
+    box-shadow: inset 0 1px 0 alpha(#ffffff, 0.06);
+}
+
+.modules-left > widget > *:hover,
+.modules-center > widget > *:hover,
+.modules-right > widget > *:hover {
+    background: @steel_bg_hard;
+}
+
+#workspaces {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-left: 2px;
+}
+
+#workspaces button {
+    background: alpha(@background, 0.45);
+    color: alpha(@foreground, 0.45);
+    border: 1px solid alpha(@foreground, 0.16);
+    border-radius: 4px;
+    min-width: 22px;
+    padding: 4px 6px;
+    margin: 0 2px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+#workspaces button.occupied {
+    color: alpha(@foreground, 0.78);
+    border-color: alpha(@tone_blue, 0.45);
+}
+
+#workspaces button.active {
+    background: alpha(@tone_blue, 0.42);
+    color: @steel_dark;
+    border-color: alpha(@tone_blue, 0.90);
+}
+
+#workspaces button:hover {
+    background: alpha(@tone_blue, 0.25);
+    color: @steel_text;
+}
+
+#hyprland-window,
+#window {
+    color: @steel_soft;
+    font-style: normal;
+    min-width: 220px;
+    border-left: 3px solid alpha(@tone_blue, 0.65);
+}
+
+#custom-weather {
+    background: alpha(@tone_blue, 0.30);
+    border-color: alpha(@tone_blue, 0.70);
+    color: @steel_dark;
+}
+
+#custom-spotify {
+    background: alpha(@tone_green, 0.36);
+    border-color: alpha(@tone_green, 0.82);
+    color: @steel_dark;
+    min-width: 260px;
+}
+
+#clock {
+    background: alpha(@tone_violet, 0.36);
+    border-color: alpha(@tone_violet, 0.82);
+    color: @steel_dark;
+    letter-spacing: 0.08em;
+    font-size: 16px;
+    padding: 6px 18px;
+}
+
+#custom-updates {
+    background: alpha(@tone_blue, 0.38);
+    border-color: alpha(@tone_blue, 0.82);
+    color: @steel_dark;
+}
+
+#custom-updates.updated,
+#custom-updates.none {
+    background: alpha(@tone_green, 0.34);
+    border-color: alpha(@tone_green, 0.80);
+    color: @steel_dark;
+}
+
+#custom-updates.warning {
+    background: alpha(@tone_orange, 0.42);
+    border-color: alpha(@tone_orange, 0.85);
+    color: @steel_dark;
+}
+
+#custom-updates.critical,
+#custom-updates.error {
+    background: alpha(@tone_rose, 0.44);
+    border-color: alpha(@tone_rose, 0.88);
+    color: @steel_dark;
+}
+
+#pulseaudio {
+    background: alpha(@tone_violet, 0.34);
+    border-color: alpha(@tone_violet, 0.80);
+    color: @steel_dark;
+}
+
+#pulseaudio.muted,
+#pulseaudio.source-muted {
+    background: alpha(@background, 0.86);
+    border-color: alpha(@foreground, 0.28);
+    color: @steel_soft;
+}
+
+#battery {
+    background: alpha(@foreground, 0.10);
+    border-color: alpha(@foreground, 0.30);
+    color: @steel_text;
+}
+
+#battery.charging,
+#battery.plugged {
+    background: alpha(@tone_green, 0.30);
+    border-color: alpha(@tone_green, 0.75);
+    color: @steel_dark;
+}
+
+#battery.warning:not(.charging) {
+    background: alpha(@tone_orange, 0.30);
+    border-color: alpha(@tone_orange, 0.75);
+    color: @steel_dark;
+}
+
+#battery.critical:not(.charging) {
+    background: alpha(@tone_rose, 0.38);
+    border-color: alpha(@tone_rose, 0.90);
+    color: @steel_dark;
+    animation: pulse 0.9s linear infinite;
+}
+
+@keyframes pulse {
+    50% { opacity: 0.50; }
+}
+
+#custom-dunst,
+#custom-notification,
+#idle_inhibitor,
+#tray {
+    background: alpha(@background, 0.72);
+    color: @steel_text;
+}
+
+#idle_inhibitor.activated {
+    background: alpha(@tone_rose, 0.36);
+    border-color: alpha(@tone_rose, 0.80);
+    color: @steel_dark;
+}
+
+tooltip {
+    background: alpha(@background, 0.95);
+    border: 1px solid alpha(@tone_blue, 0.50);
+    border-radius: 6px;
+    color: @steel_text;
+    padding: 7px 11px;
+}
+
+tooltip label {
+    color: @steel_text;
+}

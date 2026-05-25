@@ -1,0 +1,136 @@
+/* ================================================
+   SUNSET FLOW — warm and soft
+   ================================================ */
+
+@import "/home/moonly/.cache/wal/colors-waybar.css";
+
+@define-color shell_bg  alpha(@background, 0.86);
+@define-color shell_bd  alpha(@foreground, 0.22);
+@define-color shell_txt alpha(@foreground, 0.96);
+@define-color dark_txt  #1a120d;
+
+@define-color sun_orange #fb923c;
+@define-color sun_pink   #f472b6;
+@define-color sun_gold   #fbbf24;
+@define-color sun_peach  #fdba74;
+
+* {
+    font-family: "CaskaydiaCove Nerd Font";
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+window#waybar {
+    background: transparent;
+    color: @shell_txt;
+}
+
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+    background: @shell_bg;
+    color: @shell_txt;
+    border: 1px solid @shell_bd;
+    border-radius: 14px;
+    margin: 4px 3px;
+    padding: 5px 12px;
+    box-shadow: 0 2px 4px alpha(#000000, 0.18);
+}
+
+#workspaces {
+    background: alpha(@background, 0.92);
+    border: 1px solid alpha(@sun_peach, 0.40);
+    border-radius: 14px;
+    padding: 0 5px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: alpha(@foreground, 0.64);
+    border: none;
+    border-radius: 10px;
+    margin: 0 1px;
+    padding: 3px 7px;
+}
+
+#workspaces button.active {
+    background: alpha(@sun_orange, 0.56);
+    color: @dark_txt;
+}
+
+#workspaces button.occupied {
+    color: alpha(@foreground, 0.86);
+}
+
+#custom-weather {
+    background: alpha(@sun_peach, 0.56);
+    border-color: alpha(@sun_peach, 0.82);
+    color: @dark_txt;
+}
+
+#custom-spotify {
+    background: alpha(@sun_pink, 0.54);
+    border-color: alpha(@sun_pink, 0.80);
+    color: @dark_txt;
+    min-width: 240px;
+}
+
+#clock {
+    background: alpha(@sun_orange, 0.60);
+    border-color: alpha(@sun_orange, 0.84);
+    color: @dark_txt;
+    letter-spacing: 0.08em;
+    font-size: 15px;
+    padding: 5px 16px;
+}
+
+#custom-updates,
+#pulseaudio,
+#idle_inhibitor.activated {
+    background: alpha(@sun_gold, 0.56);
+    border-color: alpha(@sun_gold, 0.86);
+    color: @dark_txt;
+}
+
+#battery.charging,
+#battery.plugged {
+    background: alpha(@color2, 0.54);
+    border-color: alpha(@color2, 0.84);
+    color: @dark_txt;
+}
+
+#battery.warning:not(.charging) {
+    background: alpha(@sun_gold, 0.60);
+    color: @dark_txt;
+}
+
+#battery.critical:not(.charging),
+#custom-updates.critical,
+#custom-updates.error {
+    background: alpha(#fb7185, 0.62);
+    border-color: alpha(#fb7185, 0.88);
+    color: @dark_txt;
+}
+
+#custom-notification,
+#idle_inhibitor,
+#tray {
+    background: alpha(@background, 0.80);
+}
+
+tooltip {
+    background: alpha(@background, 0.96);
+    border: 1px solid alpha(@sun_orange, 0.44);
+    border-radius: 10px;
+    color: @shell_txt;
+    padding: 6px 12px;
+}
+
+tooltip label {
+    color: @shell_txt;
+}

@@ -1,0 +1,85 @@
+/* 🌙✨ MAGIC POCKET THEME (Clean) ✨🌙 */
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+configuration {
+    font: "CaskaydiaCove Nerd Font Bold 12";
+    show-icons: true;
+    icon-theme: "Papirus-Dark"; 
+    /* IMPORTANTE: Activa Pango Markup para los colores */
+    markup: true;
+}
+
+* {
+    background-color: @background;
+    text-color: @foreground;
+    selected: @selected-normal-background;
+    accent: @active-background;
+    urgent: @urgent-background;
+}
+
+window {
+    transparency: "real";
+    width: 600px;
+    border: 2px;
+    border-color: @border;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing: 10px;
+}
+
+inputbar {
+    background-color: transparent;
+    children: [ prompt, entry ];
+    padding: 2px;
+}
+
+prompt {
+    background-color: @selected;
+    text-color: #1a1b26;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 0 5px 0 0;
+}
+
+entry {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    placeholder: "Busca...";
+}
+
+listview {
+    lines: 6;
+    columns: 1;
+    scrollbar: false;
+    spacing: 5px;
+    margin: 5px 0 0 0;
+}
+
+element {
+    padding: 8px;
+    border-radius: 8px;
+    orientation: horizontal; /* Icono al lado del texto */
+    spacing: 10px;
+}
+
+element selected {
+    background-color: rgba(153, 204, 255, 0.2);
+    text-color: @selected;
+}
+
+/* El icono debe ser transparente para no verse como un cuadro negro */
+element-icon {
+    size: 28px;
+    background-color: transparent;
+    vertical-align: 0.5;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}

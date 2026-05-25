@@ -1,0 +1,340 @@
+/* ================================================
+   CANDY BAR — waybar top · PyWal + candy palette
+   Edwin · Hyprland / Arch Linux
+   ================================================ */
+
+@import "../../.cache/wal/colors-waybar.css";
+
+/* ── Candy fixed colors (no cambian con PyWal) ── */
+@define-color candy_pink    #f472b6;
+@define-color candy_lila    #a78bfa;
+@define-color candy_indigo  #818cf8;
+@define-color candy_rose    #fb7185;
+@define-color spotify_green #1db954;
+@define-color alert_red     #ff6666;
+
+/* ── Superficies derivadas de PyWal ── */
+@define-color surface      alpha(@background, 0.00);
+@define-color card         alpha(@background, 0.84);
+@define-color card_strong  alpha(@background, 0.92);
+@define-color border       alpha(@foreground, 0.24);
+@define-color text_main    alpha(@foreground, 0.98);
+@define-color text_soft    alpha(@foreground, 0.90);
+@define-color text_on_tint #111111;
+@define-color accent   @color4;
+
+/* ── Reset global ── */
+* {
+    font-family: "CaskaydiaCove Nerd Font";
+    font-weight: 600;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+}
+
+/* ════════════════════════════════
+   BARRA PRINCIPAL — transparente
+   ════════════════════════════════ */
+window#waybar {
+    background-color: @surface;
+    color: @foreground;
+}
+
+window#waybar.hidden {
+    opacity: 0.1;
+}
+
+/* ════════════════════════════════
+   PÍLDORAS — base para todos
+   ════════════════════════════════ */
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+    background-color: @card;
+    color: @text_main;
+    margin: 5px 3px;
+    padding: 5px 13px;
+    border: 1px solid @border;
+    border-radius: 999px;
+    min-height: 0;
+    text-shadow: 0 1px 2px alpha(#000000, 0.42), 0 -1px 1px alpha(#ffffff, 0.10);
+    box-shadow: 0 1px 2px alpha(#000000, 0.30), inset 0 1px 0 alpha(#ffffff, 0.08);
+}
+
+/* ════════════════════════════════
+   WORKSPACES
+   ════════════════════════════════ */
+#workspaces {
+    background-color: @card_strong;
+    border: 1px solid alpha(@candy_lila, 0.30);
+    border-radius: 999px;
+    padding: 0 6px;
+}
+
+#workspaces button {
+    background-color: transparent;
+    color: alpha(@foreground, 0.62);
+    border-radius: 999px;
+    border: none;
+    padding: 4px 5px;
+    margin: 0 1px;
+    box-shadow: none;
+    font-size: 10px;
+    min-width: 0;
+}
+
+#workspaces button.active {
+    color: @candy_pink;
+    font-size: 13px;
+    text-shadow: 0 0 8px alpha(@candy_pink, 0.6), 0 1px 2px alpha(#000000, 0.45);
+}
+
+#workspaces button.occupied {
+    color: @candy_lila;
+    opacity: 0.85;
+}
+
+#workspaces button:hover {
+    background-color: alpha(@candy_pink, 0.10);
+    color: @foreground;
+}
+
+/* ════════════════════════════════
+   WINDOW TITLE
+   ════════════════════════════════ */
+#window {
+    color: @text_soft;
+    border-color: alpha(@candy_lila, 0.12);
+    font-style: italic;
+    font-weight: 400;
+}
+
+#clock,
+#custom-weather,
+#custom-updates,
+#pulseaudio,
+#battery,
+#custom-hardware,
+#custom-dunst,
+#custom-notification,
+#idle_inhibitor,
+#tray,
+#window {
+    font-weight: 700;
+}
+
+/* ════════════════════════════════
+   WEATHER
+   ════════════════════════════════ */
+#custom-weather {
+    color: @text_soft;
+    border-color: alpha(@candy_indigo, 0.18);
+}
+
+/* ════════════════════════════════
+   SPOTIFY — siempre verde
+   ════════════════════════════════ */
+#custom-spotify {
+    color: @text_on_tint;
+    background-color: alpha(@spotify_green, 0.26);
+    border-color: alpha(@spotify_green, 0.52);
+}
+
+#custom-spotify:hover {
+    background-color: alpha(@spotify_green, 0.32);
+    border-color: alpha(@spotify_green, 0.64);
+}
+
+/* ════════════════════════════════
+   CLOCK — lila destacado
+   ════════════════════════════════ */
+#clock {
+    color: @text_on_tint;
+    background-color: alpha(@candy_lila, 0.32);
+    border-color: alpha(@candy_lila, 0.56);
+    letter-spacing: 0.06em;
+    font-size: 14px;
+    padding: 5px 16px;
+}
+
+/* ════════════════════════════════
+   UPDATES
+   ════════════════════════════════ */
+#custom-updates {
+    color: @text_on_tint;
+    background-color: alpha(@candy_indigo, 0.28);
+    border-color: alpha(@candy_indigo, 0.54);
+}
+
+#custom-updates:hover {
+    background-color: alpha(@candy_indigo, 0.34);
+    border-color: alpha(@candy_indigo, 0.66);
+}
+
+#custom-updates.updated,
+#custom-updates.none {
+    color: @text_on_tint;
+    background-color: alpha(@spotify_green, 0.24);
+    border-color: alpha(@spotify_green, 0.48);
+}
+
+#custom-updates.warning {
+    color: @text_on_tint;
+    background-color: alpha(#fbbf24, 0.26);
+    border-color: alpha(#fbbf24, 0.52);
+}
+
+#custom-updates.critical,
+#custom-updates.error {
+    color: @text_on_tint;
+    background-color: alpha(@alert_red, 0.28);
+    border-color: alpha(@alert_red, 0.56);
+}
+
+/* ════════════════════════════════
+   PULSEAUDIO / AUDIO
+   ════════════════════════════════ */
+#pulseaudio {
+    color: @text_on_tint;
+    background-color: alpha(@candy_pink, 0.26);
+    border-color: alpha(@candy_pink, 0.50);
+}
+
+#pulseaudio:hover {
+    background-color: alpha(@candy_pink, 0.32);
+    border-color: alpha(@candy_pink, 0.62);
+}
+
+#pulseaudio.bluetooth {
+    color: @text_on_tint;
+    background-color: alpha(@candy_indigo, 0.28);
+    border-color: alpha(@candy_indigo, 0.52);
+}
+
+#pulseaudio.muted {
+    color: alpha(@foreground, 0.62);
+    background-color: @card_strong;
+    border-color: @border;
+}
+
+#pulseaudio.source-muted {
+    color: alpha(@foreground, 0.72);
+    background-color: alpha(@background, 0.88);
+    border-color: @border;
+}
+
+/* ════════════════════════════════
+   BATTERY
+   ════════════════════════════════ */
+#battery {
+    color: @text_soft;
+    border-color: alpha(@candy_lila, 0.18);
+}
+
+#battery.charging {
+    color: @text_on_tint;
+    background-color: alpha(@spotify_green, 0.24);
+    border-color: alpha(@spotify_green, 0.46);
+}
+
+#battery.plugged {
+    color: @spotify_green;
+}
+
+#battery.warning:not(.charging) {
+    color: @text_on_tint;
+    background-color: alpha(#fbbf24, 0.22);
+    border-color: alpha(#fbbf24, 0.46);
+}
+
+#battery.critical:not(.charging) {
+    color: @text_on_tint;
+    background-color: alpha(@alert_red, 0.28);
+    border-color: alpha(@alert_red, 0.58);
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.45; }
+}
+
+/* ════════════════════════════════
+   HARDWARE (CPU / GPU)
+   ════════════════════════════════ */
+#custom-hardware {
+    color: @text_soft;
+    border-color: alpha(@candy_indigo, 0.18);
+}
+
+/* ════════════════════════════════
+   DUNST
+   ════════════════════════════════ */
+#custom-dunst {
+    color: alpha(@foreground, 0.74);
+    border-color: alpha(@candy_lila, 0.14);
+}
+
+/* ════════════════════════════════
+   TRAY
+   ════════════════════════════════ */
+#tray {
+    padding: 5px 10px;
+    border-color: alpha(@candy_pink, 0.14);
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    border-color: alpha(@candy_pink, 0.55);
+}
+
+/* ════════════════════════════════
+   IDLE INHIBITOR
+   ════════════════════════════════ */
+#idle_inhibitor {
+    padding: 5px 12px;
+    color: @text_on_tint;
+    background-color: alpha(@candy_lila, 0.24);
+    border-color: alpha(@candy_lila, 0.46);
+}
+
+#idle_inhibitor:hover {
+    background-color: alpha(@candy_lila, 0.30);
+    border-color: alpha(@candy_lila, 0.58);
+}
+
+#idle_inhibitor.activated {
+    color: @text_on_tint;
+    background-color: alpha(@candy_pink, 0.30);
+    border-color: alpha(@candy_pink, 0.58);
+}
+
+/* ════════════════════════════════
+   NOTIFICATION (swaync)
+   ════════════════════════════════ */
+#custom-notification {
+    color: alpha(@foreground, 0.76);
+    border-color: alpha(@candy_pink, 0.14);
+    padding: 5px 11px;
+}
+
+/* ════════════════════════════════
+   TOOLTIP
+   ════════════════════════════════ */
+tooltip {
+    background: @card_strong;
+    border: 1px solid alpha(@candy_lila, 0.30);
+    border-radius: 14px;
+    color: @text_main;
+    padding: 6px 14px;
+}
+
+tooltip label {
+    color: @foreground;
+}

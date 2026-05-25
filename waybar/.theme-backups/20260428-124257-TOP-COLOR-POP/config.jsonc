@@ -1,0 +1,17 @@
+{
+    // --- CONFIGURACIÓN GLOBAL ---
+    "layer": "top",
+    "position": "bottom",
+    "height": 25,  // <--- AÑADE ESTO (30px es muy compacto, 26px es 'ultra-slim')
+    "spacing": 0,
+    "margin-top": 0,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-bottom": 5,
+    
+    // --- IMPORTAR MÓDULOS (La Magia) ---
+    "include": [
+        "~/.config/waybar/modules/left.jsonc",
+        "~/.config/waybar/modules/right.jsonc"
+    ]
+}

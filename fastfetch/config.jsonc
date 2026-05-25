@@ -1,0 +1,119 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  
+  "logo": {
+      "type": "kitty",
+      "source": "~/.config/fastfetch/Doro.gif", 
+      "width": 25,
+      "height": 12,
+      "padding": {
+          "top": 2,
+          "left": 2
+      }
+  },
+
+  "display": {
+      "separator": "  ",
+      "color": {
+          "keys": "35",    // Rosa/Morado de Pywal (Color 5)
+          "title": "34"   // Azul de Pywal (Color 4)
+      },
+      "key": {
+        "width": 15
+      }
+  },
+
+  "modules": [
+      // --- TÍTULO PERSONALIZADO ---
+
+      {
+          "type": "title",
+          "format": " {1} 󰣇 {2}",
+          "color": {
+              "user": "34",
+              "at": "37",
+              "host": "35"
+          }
+      },
+      {
+          "type": "custom",
+          "format": " ┌──────────────────────────────────────────┐",
+          "outputColor": "34"
+      },
+
+      // --- SISTEMA (Moon Power) ---
+      {
+          "type": "os",
+          "key": " 󰣇 OS",
+          "keyColor": "34"
+      },
+      {
+          "type": "kernel",
+          "key": "  Kernel",
+          "keyColor": "34"
+      },
+      {
+          "type": "packages",
+          "key": " 󰏖 Paquetes",
+          "keyColor": "34"
+      },
+      {
+          "type": "uptime",
+          "key": " 󰅐 Uptime",
+          "keyColor": "34"
+      },
+
+      // --- ENTORNO (Visuals) ---
+      {
+          "type": "wm",
+          "key": "  WM",
+          "keyColor": "35"
+      },
+      {
+          "type": "terminal",
+          "key": "  Terminal",
+          "keyColor": "35"
+      },
+      {
+          "type": "shell",
+          "key": "  Shell",
+          "keyColor": "35"
+      },
+
+      // --- HARDWARE (Cristal de Plata) ---
+      {
+          "type": "cpu",
+          "key": "  CPU",
+          "keyColor": "36", // Cyan de Pywal
+          "format": "{1}"
+      },
+      {
+          "type": "gpu",
+          "key": " 󰢮 GPU",
+          "keyColor": "36",
+          "format": "{2}"
+      },
+      {
+          "type": "memory",
+          "key": "  RAM",
+          "keyColor": "36"
+      },
+
+      {
+          "type": "custom",
+          "format": " └──────────────────────────────────────────┘",
+          "outputColor": "34"
+      },
+
+      "break",
+
+      // --- BLOQUES DE COLORES (Pywal Palette) ---
+      {
+          "type": "colors",
+          "symbol": "circle",
+          "block": {
+              "range": [1, 6]
+          }
+      }
+  ]
+}

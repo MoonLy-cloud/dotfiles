@@ -1,0 +1,103 @@
+[global]
+    # --- POSICIÓN Y TAMAÑO (Nueva Sintaxis) ---
+    # En lugar de 'geometry', ahora usamos esto:
+    
+    # Ancho de la notificación (Mínimo, Máximo)
+    # Si pones solo un número es ancho fijo.
+    width = (200, 280)
+    
+    # Altura máxima de una sola notificación antes de cortar texto
+    height = 200
+    
+    # Dónde aparece: top-left, top-right, bottom-left, etc.
+    origin = top-right
+    
+    # Separación del borde de la pantalla (Horizontal x Vertical)
+    # 15px de la derecha, 50px de arriba (para no tapar la Waybar)
+    offset = 15x50
+    
+    # Cuántas notificaciones mostrar antes de decir "y X más..."
+    notification_limit = 5
+
+    # --- ESTÉTICA (Tokyo Night) ---
+    font = JetBrainsMono Nerd Font 9
+    
+    # Transparencia (0=Opaco, 100=Invisible)
+    transparency = 10
+    
+    # Espaciado interno
+    padding = 10
+    horizontal_padding = 12
+    text_icon_padding = 10
+    
+    # BORDES
+    frame_width = 2
+    frame_color = "#7aa2f7"
+    corner_radius = 10
+    
+    # Separación entre notificaciones si salen varias
+    gap_size = 5
+    
+    # --- ICONOS ---
+    icon_theme = Papirus-Dark
+    enable_recursive_icon_lookup = true
+    show_icons = true
+    icon_position = left
+    # Tamaño máximo (esto ayuda a mantenerlas compactas)
+    min_icon_size = 24
+    max_icon_size = 48
+
+    # --- COMPORTAMIENTO ---
+    # Barra de progreso (ej: volumen, brillo)
+    progress_bar = true
+    progress_bar_height = 8
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 280
+
+    follow = mouse
+    sort = yes
+    indicate_hidden = yes
+    sticky_history = yes
+    
+    # Formato del texto
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    show_age_threshold = 60
+    word_wrap = yes
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+
+    # Acciones del ratón
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+# --- COLORES (Tokyo Night) ---
+
+[urgency_low]
+    background = "#1a1b26"
+    foreground = "#565f89"
+    frame_color = "#565f89"
+    timeout = 4
+
+[urgency_normal]
+    background = "#1a1b26"
+    foreground = "#c0caf5"
+    frame_color = "#7aa2f7" # Azul Tokio
+    timeout = 8
+
+[urgency_critical]
+    background = "#1a1b26"
+    foreground = "#f7768e"
+    frame_color = "#f7768e" # Rojo Alerta
+    timeout = 0 # Se queda hasta que la cierres
+
+# --- REGLAS ESPECIALES (Opcional) ---
+# Ejemplo: Hacer que las capturas de pantalla no tengan timeout
+#[screenshot]
+#    summary = "Captura*"
+#    timeout = 0

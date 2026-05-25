@@ -1,0 +1,16 @@
+/* 🌸 ROFI ORIGAMI THEME - CONFIG 🌸 */
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    modi:                       "drun,run,filebrowser,window";
+    show-icons:                 true;
+    display-drun:               "󰀻 Aplicaciones";
+    display-run:                " Run";
+    display-filebrowser:        " Archivos";
+    display-window:             " Ventanas";
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
+    
+    font:                        "CaskaydiaCove Nerd Font 10";
+    icon-theme:                  "Papirus";
+}

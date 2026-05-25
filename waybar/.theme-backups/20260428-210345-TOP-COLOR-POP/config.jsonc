@@ -1,0 +1,61 @@
+[
+{
+    "name": "top-bar",
+    "layer": "top",
+    "position": "top",
+    "height": 44,
+    "spacing": 7,
+    "margin-top": 10,
+    "margin-left": 12,
+    "margin-right": 12,
+    "margin-bottom": 0,
+    "include": [
+        "~/.config/waybar/Configs-way/TOP-COLOR-POP/modules/left.jsonc",
+        "~/.config/waybar/Configs-way/TOP-COLOR-POP/modules/center.jsonc",
+        "~/.config/waybar/Configs-way/TOP-COLOR-POP/modules/right.jsonc"
+    ],
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/weather",
+        "custom/updates"
+    ],
+    "modules-center": [
+        "hyprland/window",
+        "clock"
+    ],
+    "modules-right": [
+        "custom/spotify",
+        "pulseaudio",
+        "battery",
+        "idle_inhibitor",
+        "custom/notification",
+        "custom/dunst",
+        "tray"
+    ]
+},
+
+{
+    "name": "left-bar",
+    "layer": "top",
+    "position": "left",
+    "height": 44,
+    "spacing": 7,
+    "margin-top": 0,
+    "margin-left": 12,
+    "margin-right": 12,
+    "margin-bottom": 10,
+    "include": [
+        "~/.config/waybar/Configs-way/TOP-COLOR-POP/modules/bottom.jsonc"
+    ],
+    "modules-left": [
+        "custom/launcher"
+    ],
+    "modules-center": [
+        "custom/taskbar"
+    ],
+    "modules-right": [
+        "custom/clock"
+    ]
+}
+]
+

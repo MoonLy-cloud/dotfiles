@@ -1,0 +1,106 @@
+/* Material You Variant C: notification center */
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    font: "JetBrainsMono Nerd Font 10";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    display-drun: "";
+    drun-display-format: "{name}";
+    disable-history: false;
+    sidebar-mode: false;
+}
+
+* {
+    background-color: @background;
+    text-color: @foreground;
+    selected: @selected-normal-background;
+    accent: @active-background;
+    urgent: @urgent-background;
+    surface-container-low: rgba(255, 255, 255, 0.03);
+    surface-container: rgba(255, 255, 255, 0.07);
+    surface-container-high: rgba(255, 255, 255, 0.11);
+    outline-variant: rgba(255, 255, 255, 0.16);
+    on-surface-variant: rgba(255, 255, 255, 0.70);
+}
+
+window {
+    transparency: "real";
+    background-color: @background;
+    text-color: @foreground;
+    border: 1px;
+    border-color: var(outline-variant);
+    border-radius: 28px;
+    location: northeast;
+    anchor: northeast;
+    x-offset: -15px;
+    y-offset: 55px;
+    width: 530px;
+    height: 420px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ inputbar, listview ];
+    spacing: 10px;
+    padding: 14px;
+}
+
+inputbar {
+    background-color: var(surface-container);
+    text-color: @foreground;
+    border-radius: 999px;
+    border: 1px solid;
+    border-color: var(surface-container-high);
+    padding: 10px 12px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @selected;
+    padding: 0 8px 0 0;
+}
+
+entry {
+    placeholder: "Buscar en historial...";
+    placeholder-color: var(on-surface-variant);
+    text-color: @foreground;
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 7;
+    spacing: 7px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+}
+
+element {
+    background-color: var(surface-container-low);
+    text-color: @foreground;
+    orientation: horizontal;
+    border-radius: 18px;
+    border: 1px solid;
+    border-color: transparent;
+    padding: 9px 10px;
+}
+
+element-icon {
+    size: 23px;
+    margin: 0 10px 0 0;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element selected {
+    background-color: var(surface-container);
+    border-color: @selected;
+    text-color: @foreground;
+}

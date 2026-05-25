@@ -1,0 +1,58 @@
+[
+    {
+    "name": "top-bar",
+    "layer": "top",
+    "position": "top",
+    "spacing": 7,
+    "margin-top": 10,
+    "margin-left": 0,
+    "margin-right": 10,
+    "margin-bottom": 0,
+    "include": [
+        "~/.config/waybar/Configs-way/TOP-COLOR-POP/modules/top-bar/left.jsonc",
+        "~/.config/waybar/Configs-way/TOP-COLOR-POP/modules/top-bar/center.jsonc",
+        "~/.config/waybar/Configs-way/TOP-COLOR-POP/modules/top-bar/right.jsonc"
+    ],
+    "modules-left": [
+        "hyprland/window",
+        "custom/weather"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/spotify",
+        "pulseaudio",
+        "battery",
+        "idle_inhibitor",
+        "custom/notification",
+        "custom/dunst"
+    ]
+    },
+
+    {
+    "name": "left-bar",
+    "layer": "left",
+    "position": "left",
+    "spacing": 0,
+    "width": 0,
+    "margin-top": 8,
+    "margin-left": 5,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    "include": [
+        "~/.config/waybar/Configs-way/TOP-COLOR-POP/modules/left-bar/left.jsonc",
+        "~/.config/waybar/Configs-way/TOP-COLOR-POP/modules/left-bar/center.jsonc",
+        "~/.config/waybar/Configs-way/TOP-COLOR-POP/modules/left-bar/right.jsonc"
+    ],
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "custom/updates",
+        "pulseaudio",
+        "tray"
+    ]
+    }
+]
